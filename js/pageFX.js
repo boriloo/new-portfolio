@@ -1,5 +1,5 @@
 // @ts-nocheck
-const LERP_EASE = 0.05;
+const LERP_EASE = 0.04;
 const PARALLAX_INTENSITY = 0.15;
 
 function lerp(start, end, t) {

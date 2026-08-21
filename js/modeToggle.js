@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 (function () {
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
