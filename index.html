@@ -6,9 +6,9 @@
     <meta name="google-site-verification" content="EbyRNpCaaBbrpL86jon1xHuAM3S_j5vMmD3NfUZulcQ" />
     <title>Boriloo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" type="image/png" href="./public/icons/favicon.png">
     <link rel="stylesheet" href="./css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body class="bg-bg cursor-none">
@@ -33,6 +33,7 @@
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
+
 
     <nav class="w-full fixed md:justify-end justify-end top-0 z-50 flex flex-row p-4">
 
@@ -120,10 +121,8 @@
 
         </aside>
 
-        <aside class="sticky w-70 h-screen bg-bg z-[90] border-r-2 ">
-        </aside>
 
-        <div id="lerp-wrapper" class=" w-[calc(100%-16rem)] relative overflow-hidden">
+        <div id="lerp-wrapper" class="fixed top-0 right-0 w-[calc(100%-280px)] overflow-hidden">
             <main class="w-full flex flex-col justify-center">
 
                 <section class="min-h-screen w-full flex flex-wrap items-center p-20">
@@ -142,7 +141,7 @@
                             <p class="text-fg text-[20px]">
                                 Sou um desenvolvedor <span class="text-first font-semibold">full-stack</span> brasileiro
                                 <img src="./public/assets/brazil.png"
-                                    class="w-6 h-8 inline-block align-middle mx-1 pb-1">,
+                                    class="w-6 h-8 inline-block align-middle mx-1 pb-1"> com 19 anos de idade,
                                 especializado em React/Next.js e Node.js, com experiência em desenvolvimento de
                                 aplicações de nível comercial, com a melhor experiência possível.
                             </p>
@@ -176,58 +175,51 @@
                             </div>
                         </div>
 
-                        <div class="flex-col relative">
+                        <div class="flex-col relative group">
 
                             <div id="tilt-container"
-                                class="w-[300px] transition-all h-[300px] hide-cursor-ball cursor-pointer [perspective:1000px] select-none"
-                                onclick="this.querySelector('.coin-spin').classList.toggle('[transform:rotateY(180deg)]')">
-
-
+                                class="w-[300px] transition-all h-[300px] hide-cursor-ball cursor-pointer [perspective:1000px] select-none">
                                 <div id="tilt-wrapper"
                                     class="w-full h-full transition-transform duration-200 ease-out [transform-style:preserve-3d]">
-
-
                                     <div class="w-full h-full animate-float-idle pointer-events-none">
-
-
                                         <div
                                             class="coin-spin relative w-full h-full transition-transform duration-[600ms] ease-out [transform-style:preserve-3d] shadow-2xl rounded-xl">
 
-
+                                            <!-- Frente (Empurrada para 16px) -->
                                             <div
-                                                class="absolute inset-0 rounded-xl bg-first overflow-hidden backface-hidden [transform:translateZ(8px)]">
-                                                <img src="./public/assets/photo.png" class="w-full h-full object-cover"
-                                                    alt="Frente">
+                                                class="absolute inset-0 rounded-xl bg-first overflow-hidden backface-hidden [transform:translateZ(16px)]">
+                                                <img id="img-front" src="./public/assets/photo.png"
+                                                    class="w-full h-full object-cover" alt="Frente">
                                             </div>
 
+                                            <!-- Miolo do card (O preenchimento da grossura) -->
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(12px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(8px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(4px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(0px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(-4px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(-8px)]">
+                                            </div>
+                                            <div
+                                                class="absolute inset-0 rounded-xl bg-first [transform:translateZ(-12px)]">
+                                            </div>
 
+                                            <!-- Verso (Empurrado para 16px no lado invertido) -->
                                             <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(6px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(4px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(2px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(0px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(-2px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(-4px)]">
-                                            </div>
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-second [transform:translateZ(-6px)]">
-                                            </div>
-
-
-                                            <div
-                                                class="absolute inset-0 rounded-xl bg-gray-200 overflow-hidden backface-hidden [transform:rotateY(180deg)_translateZ(8px)]">
-                                                <img src="./public/assets/photo2.png" class="w-full h-full object-cover"
-                                                    alt="Verso">
+                                                class="absolute inset-0 rounded-xl bg-gray-200 overflow-hidden backface-hidden [transform:rotateY(180deg)_translateZ(16px)]">
+                                                <img id="img-back" src="./public/assets/photo2.png"
+                                                    class="w-full h-full object-cover" alt="Verso">
                                             </div>
 
                                         </div>
@@ -238,6 +230,14 @@
                             <img src="./public/icons/cursor.png"
                                 class="absolute -right-5 -bottom-5 animate-pulse w-12 h-12 z-[100]" alt="">
 
+
+                            <div id="foto-balao"
+                                class="absolute opacity-0 group-hover:opacity-100 transition-all duration-400 -top-5 -right-34 p-2 px-4 rounded-xl rounded-bl-none bg-first inline-flex justify-center items-center">
+                                <p id="foto-texto" class="text-white">Esse sou eu!</p>
+                                <div
+                                    class="absolute bottom-0 left-[-7px] w-0 h-0 border-r-[8px] border-r-first border-t-[10px] border-t-transparent">
+                                </div>
+                            </div>
                         </div>
 
 
@@ -254,22 +254,21 @@
                     <div class="w-full h-0.5 bg-fg opacity-35"></div>
                     <h1 class="text-[80px]">Quem sou eu</h1>
                     <p class="w-full max-w-[1000px]">Sou um Desenvolvedor Full-Stack e estudante de Engenharia de
-                        Software,
-                        com experiência prática na criação de aplicações web escaláveis. Tenho foco na construção e
-                        manutenção de APIs REST e interfaces dinâmicas, dominando o ecossistema JavaScript/TypeScript
-                        com tecnologias como React, Next.js, Node.js e modelagem de bancos de dados SQL/NoSQL.
+                        Software focado na criação de aplicações web escaláveis, APIs REST e interfaces dinâmicas.
+                        Domino o ecossistema JavaScript/TypeScript, com tecnologias como React, Next.js, Node.js e
+                        bancos SQL/NoSQL, atuando diariamente com práticas modernas de engenharia, fluxos Git e
+                        metodologias ágeis.
                     </p>
                     <p class="w-full max-w-[1000px] mt-4">
-                        Trabalho diariamente com práticas modernas de engenharia, fluxos baseados em Git e metodologias
-                        ágeis em projetos reais. Minha principal característica é a capacidade de resolução de
-                        problemas: consigo traduzir protótipos complexos e regras de negócio em soluções de ponta a
-                        ponta, sempre priorizando a performance e a experiência do usuário final.
+                        Minha principal característica é a resolução de problemas: consigo traduzir
+                        protótipos complexos e regras de negócio em soluções de ponta a ponta, sempre priorizando a
+                        performance e a experiência do usuário final.
                     </p>
                     <p class="w-full max-w-[1000px] mt-4">
                         Atualmente, atuo desenvolvendo plataformas web e arquitetando automações avançadas de integração
                         de sistemas via n8n. Além disso, desenvolvo meus próprios projetos!</p>
 
-                    <button class="text-[20px] flex flex-row hover:gap-4 hide-cursor-ball items-center origin-left cursor-none 
+                    <button class="text-[20px] flex flex-row hover:gap-4 hide-cursor-ball items-center origin-left cursor-pointer
                         hover:scale-104 bg-first p-2 px-6 transition-all mt-6 text-white group hover:brightness-150">
                         Ver meus projetos
                         <img src="./public/icons/right-arrow.png" class="group-hover:w-8 w-0 transition-all h-9" alt="">
@@ -282,27 +281,156 @@
                     </p>
                     <div class="w-full h-0.5 bg-fg opacity-35"></div>
                     <h1 class="text-[80px]">Quais tecnologias uso</h1>
-                    <p class="w-full max-w-[1000px]">Sou um Desenvolvedor Full-Stack e estudante de Engenharia de
-                        Software,
-                        com experiência prática na criação de aplicações web escaláveis. Tenho foco na construção e
-                        manutenção de APIs REST e interfaces dinâmicas, dominando o ecossistema JavaScript/TypeScript
-                        com tecnologias como React, Next.js, Node.js e modelagem de bancos de dados SQL/NoSQL.
-                    </p>
-                    <p class="w-full max-w-[1000px] mt-4">
-                        Trabalho diariamente com práticas modernas de engenharia, fluxos baseados em Git e metodologias
-                        ágeis em projetos reais. Minha principal característica é a capacidade de resolução de
-                        problemas: consigo traduzir protótipos complexos e regras de negócio em soluções de ponta a
-                        ponta, sempre priorizando a performance e a experiência do usuário final.
-                    </p>
-                    <p class="w-full max-w-[1000px] mt-4">
-                        Atualmente, atuo desenvolvendo plataformas web e arquitetando automações avançadas de integração
-                        de sistemas via n8n. Além disso, desenvolvo meus próprios projetos!</p>
 
-                    <button class="text-[20px] flex flex-row hover:gap-4 hide-cursor-ball items-center origin-left cursor-none 
-                        hover:scale-104 bg-first p-2 px-6 transition-all mt-6 text-white group hover:brightness-150">
-                        Ver meus projetos
-                        <img src="./public/icons/right-arrow.png" class="group-hover:w-8 w-0 transition-all h-9" alt="">
-                    </button>
+
+                    <div class="flex flex-row gap-2 flex-wrap justify-start w-full">
+                        <div data-desc="Tipagem estática que traz segurança e previsibilidade para o JavaScript."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-typescript-plain text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">TYPESCRIPT</h1>
+                        </div>
+
+                        <div data-desc="Criação de interfaces de usuário dinâmicas e baseadas em componentes."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-react-original text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">REACT</h1>
+                        </div>
+
+                        <div data-desc="Framework React focado em performance, SSR e SEO."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-nextjs-plain text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">NEXT.JS</h1>
+                        </div>
+
+                        <div data-desc="Estilização rápida e responsiva com classes utilitárias no HTML."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-tailwindcss-original text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">TAILWIND</h1>
+                        </div>
+
+                        <div data-desc="Execução de JavaScript no servidor para criar APIs escaláveis."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-nodejs-plain text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">NODE.JS</h1>
+                        </div>
+
+                        <div data-desc="ORM moderno que facilita a interação com bancos de dados."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-prisma-original text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">PRISMA</h1>
+                        </div>
+
+                        <div data-desc="Banco de dados relacional robusto e focado em integridade de dados."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-postgresql-plain text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">POSTGRESQL</h1>
+                        </div>
+
+                        <div data-desc="Containerização para garantir que a aplicação rode em qualquer ambiente."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex w-40 aspect-square flex-col items-center justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-docker-plain text-[50px]"></i>
+                            <h1 class="text-[18px] group-hover:text-first transition-all">DOCKER</h1>
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-[24px] text-fg/70">Outras</p>
+
+                    <div class="flex flex-row gap-2 flex-wrap">
+
+                        <div data-desc="Estruturação semântica e acessível para páginas web."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-html5-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">HTML</h1>
+                        </div>
+
+                        <div data-desc="Ferramenta de build moderna e ultrarrápida para desenvolvimento front-end."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-vite-original text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">VITE</h1>
+                        </div>
+
+                        <div data-desc="Framework minimalista para rotas e middlewares no Node.js."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-express-original text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">EXPRESS</h1>
+                        </div>
+
+                        <div data-desc="Automação, scripts de dados e desenvolvimento back-end versátil."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-python-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">PYTHON</h1>
+                        </div>
+
+                        <div data-desc="Sistema de gerenciamento de banco de dados relacional clássico e confiável."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-mysql-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">MYSQL</h1>
+                        </div>
+
+                        <div data-desc="Plataforma de back-end open-source, alternativa completa ao Firebase."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-supabase-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">SUPABASE</h1>
+                        </div>
+
+                        <div data-desc="Armazenamento em memória de altíssima velocidade para cache e sessões."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-redis-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">REDIS</h1>
+                        </div>
+
+                        <div data-desc="Controle de versionamento de código e colaboração segura."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-git-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">GIT</h1>
+                        </div>
+
+                        <div data-desc="Plataforma do Google com serviços de autenticação, banco de dados e hosting."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-firebase-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">FIREBASE</h1>
+                        </div>
+
+                        <div data-desc="Ferramenta de design colaborativo para prototipagem de interfaces UI/UX."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-figma-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">FIGMA</h1>
+                        </div>
+
+                        <div data-desc="Planejamento de sprints e rastreamento de issues em metodologias ágeis."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-jira-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">JIRA</h1>
+                        </div>
+
+                        <div data-desc="Criação e manutenção de sites focados em gestão de conteúdo (CMS)."
+                            class="tech-card border-2 border-fg/20 bg-bg p-4 flex flex-row min-w-46 items-center justify-start gap-4 justify-around group hide-cursor-ball hover:border-first hover:scale-104 transition-all">
+                            <i
+                                class="text-fg/70 group-hover:text-first transition-all devicon-wordpress-plain text-[30px]"></i>
+                            <h1 class="text-[16px] group-hover:text-first transition-all">WORDPRESS</h1>
+                        </div>
+
+                    </div>
+
                 </section>
 
 
@@ -311,42 +439,125 @@
                         Experiência
                     </p>
                     <div class="w-full h-0.5 bg-fg opacity-35"></div>
-                    <h1 class="text-[80px]">Quem sou eu</h1>
-                    <p class="w-full max-w-[1000px]">Sou um Desenvolvedor Full-Stack e estudante de Engenharia de
-                        Software,
-                        com experiência prática na criação de aplicações web escaláveis. Tenho foco na construção e
-                        manutenção de APIs REST e interfaces dinâmicas, dominando o ecossistema JavaScript/TypeScript
-                        com tecnologias como React, Next.js, Node.js e modelagem de bancos de dados SQL/NoSQL.
-                    </p>
-                    <p class="w-full max-w-[1000px] mt-4">
-                        Trabalho diariamente com práticas modernas de engenharia, fluxos baseados em Git e metodologias
-                        ágeis em projetos reais. Minha principal característica é a capacidade de resolução de
-                        problemas: consigo traduzir protótipos complexos e regras de negócio em soluções de ponta a
-                        ponta, sempre priorizando a performance e a experiência do usuário final.
-                    </p>
-                    <p class="w-full max-w-[1000px] mt-4">
-                        Atualmente, atuo desenvolvendo plataformas web e arquitetando automações avançadas de integração
-                        de sistemas via n8n. Além disso, desenvolvo meus próprios projetos!</p>
+                    <div class="w-full rounded-md flex flex-row gap-2 bg-bgSec p-4 mt-4 mb-8">
+                        <button id="btn-profissional"
+                            class="flex-1 bg-first text-white p-2 px-4 rounded-md text-[24px] transition-all">Profissional</button>
+                        <button id="btn-academica"
+                            class="flex-1 bg-fg/10 transiton-all scale-98 text-fg hover:bg-first/40 p-2 px-4 rounded-md text-[24px] transition-all cursor-pointer hide-cursor-ball">Acadêmica</button>
+                    </div>
 
-                    <button class="text-[20px] flex flex-row hover:gap-4 hide-cursor-ball items-center origin-left cursor-none 
-                        hover:scale-104 bg-first p-2 px-6 transition-all mt-6 text-white group hover:brightness-150">
-                        Ver meus projetos
-                        <img src="./public/icons/right-arrow.png" class="group-hover:w-8 w-0 transition-all h-9" alt="">
-                    </button>
+                    <!-- Conteúdo Profissional (Ativo por padrão) -->
+                    <div id="content-profissional"
+                        class="flex flex-col w-full gap-0 transition-opacity duration-300 opacity-100">
+                        <div
+                            class="flex flex-col border-fg/30 border-l-2 p-4 px-8 mt-4 gap-4 relative w-full max-w-[1000px] pb-12">
+                            <div class=" w-5 h-5 rounded-full bg-first saturate-0 absolute left-[-11px] z-10 top-5">
+                            </div>
+                            <p class="text-[20px] text-fg/65">2024 - 2025</p>
+                            <h1 class="text-[32px]">Room Company <span class="text-[24px] text-first font-medium">-
+                                    Desenvolvedor Front-End Júnior</span> </h1>
+                            <p class="text-[20px]">Desenvolvi e mantive uma biblioteca de componentes reutilizáveis
+                                utilizando React e TypeScript, garantindo a consistência visual e escalabilidade.</p>
+                            <p class="text-[20px]">Colaborei em ciclos ágeis com o time de UX/UI, convertendo protótipos
+                                complexos do Figma em interfaces funcionais de alta fidelidade, priorizando a
+                                performance e a experiência do usuário.</p>
+                            <p class="text-[20px]">Arquitetura e implementação de integrações com APIs REST para o
+                                gerenciamento de dados dinâmicos, otimizando o consumo de recursos e a renderização de
+                                informações em tempo real na aplicação.</p>
+                        </div>
+
+                        <div
+                            class="flex flex-col border-first/50 border-l-2 p-4 px-8 gap-4 relative w-full max-w-[1000px]">
+                            <div class=" w-5 h-5 rounded-full bg-first absolute left-[-11px] z-10 top-5"></div>
+                            <p class="text-[20px] text-fg/65">2025 - <span
+                                    class="p-1 px-2 bg-first/20 rounded-md text-first font-medium">Atualmente</span></p>
+                            <h1 class="text-[32px]">Bivox <span class="text-[24px] text-first font-medium">-
+                                    Desenvolvedor Web/N8N</span></h1>
+                            <p class="text-[20px]">Desenvolvimento e manutenção de plataformas web e sites
+                                institucionais (WordPress, HTML, CSS, JS), com foco em performance e experiência do
+                                usuário.</p>
+                            <p class="text-[20px]">Arquitetura e desenvolvimento de integrações via APIs REST utilizando
+                                n8n, conectando sistemas operacionais e ferramentas de marketing (como RD Station) para
+                                otimização de processos.</p>
+                            <p class="text-[20px]">Modelagem e administração de bancos de dados SQL para dar suporte
+                                escalável às soluções e fluxos de automação.</p>
+                        </div>
+                    </div>
+
+                    <!-- Conteúdo Acadêmica (Oculto por padrão) -->
+                    <!-- Conteúdo Acadêmica (Oculto por padrão) -->
+                    <div id="content-academica"
+                        class="hidden flex flex-col w-full gap-0 transition-opacity duration-300 opacity-0">
+
+                        <div
+                            class="flex flex-col border-fg/30 border-l-2 p-4 px-8 mt-4 gap-4 relative w-full max-w-[1200px] pb-12">
+                            <div class=" w-5 h-5 rounded-full bg-first saturate-0 absolute left-[-11px] z-10 top-5">
+                            </div>
+                            <p class="text-[20px] text-fg/65">2022 - 2024</p>
+                            <h1 class="text-[32px]">Técnico em Informática para Internet<span
+                                    class="text-[24px] text-first font-medium"> - Senac São Leopoldo</span></h1>
+                            <p class="text-[20px]">Formação focada na base do desenvolvimento web, englobando a
+                                construção de interfaces responsivas (HTML, CSS, JS) e estruturação de bancos de dados.
+                            </p>
+                            <p class="text-[20px]">Desenvolvimento de habilidades em lógica de programação,
+                                versionamento de código com Git e trabalho em equipe através de projetos práticos
+                                escolares.</p>
+                        </div>
+
+                        <div
+                            class="flex flex-col border-first/50 border-l-2 p-4 px-8 gap-4 relative w-full max-w-[1200px]">
+                            <div class=" w-5 h-5 rounded-full bg-first absolute left-[-11px] z-10 top-5"></div>
+                            <p class="text-[20px] text-fg/65 flex items-center">Fev/2025 - 2028<span
+                                    class="p-1 px-2 bg-first/20 rounded-md text-first font-medium ml-2">Cursando</span>
+                            </p>
+                            <h1 class="text-[32px]">Bacharelado em Engenharia de
+                                Software<span class="text-[24px] text-first font-medium"> - Universidade La Salle</span>
+                            </h1>
+                            <p class="text-[20px]">Aprofundamento em arquitetura de software, padrões de projeto, clean
+                                code e construção de sistemas modernos e escaláveis.</p>
+                            <p class="text-[20px]">Estudo de metodologias de engenharia de requisitos e modelagem de
+                                dados avançada, unindo a teoria acadêmica com a minha vivência diária no mercado de
+                                tecnologia.</p>
+                        </div>
+                    </div>
+
+
                 </section>
+
+
+                <section class=" w-full flex flex-col flex-wrap items-start p-20 gap-2 mt-40">
+                    <p class="text-[30px] opacity-55">
+                        Experiência
+                    </p>
+                    <div class="w-full h-0.5 bg-fg opacity-35"></div>
+                    <div class="w-full rounded-md flex flex-row gap-2 bg-bgSec p-2 px-4">
+                        <button class="flex-1 bg-first text-white p-2 px-4 rounded-md text-[24px]">Profissional</button>
+                        <button class="flex-1 bg-first text-white p-2 px-4 rounded-md text-[24px]">Profissional</button>
+                    </div>
+                    <div></div>
+                </section>
+
 
 
             </main>
         </div>
     </div>
 
-
-
+    <div id="tech-tooltip"
+        class="fixed opacity-0 pointer-events-none z-[999] bg-first text-white p-3 px-4 rounded-xl transition-opacity duration-200 max-w-[270px] text-center text-[15px] shadow-2xl">
+        <span id="tech-tooltip-text" class="text-white"></span>
+        <!-- Rabinho centralizado apontando para baixo -->
+        <div
+            class="absolute -bottom-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-first">
+        </div>
+    </div>
     <script src="./js/pageFX.js"></script>
     <script src="./js/modeToggle.js"></script>
     <script src="./js/circles.js"></script>
     <script src="./js/scrollbar.js"></script>
     <script src="./js/photoContainer.js"></script>
+    <script src="./js/tooltip.js"></script>
+    <script src="./js/tabs.js"></script>
 
 </body>
 

@@ -1,5 +1,5 @@
 // @ts-nocheck
-const LERP_EASE = 0.04;
+const LERP_EASE = 0.06;
 const PARALLAX_INTENSITY = 0.15;
 
 function lerp(start, end, t) {
@@ -31,10 +31,7 @@ function setupLerpScroll({
     });
   }
 
-  if (window.innerWidth <= 1366) {
-    isFxEnabled = false;
-    fxToggleBtn.textContent = 'EFEITOS: OFF'
-  }
+
 
   let currentEase = (isMobile || !isFxEnabled) ? 1 : ease;
   let current = window.scrollY;
