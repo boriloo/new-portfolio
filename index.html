@@ -37,10 +37,10 @@
 
     <nav class="w-full fixed justify-between pointer-events-none top-0 z-[110] flex flex-row p-4 items-center">
 
-        <button id="mobile-menu-btn" onclick="toggleMobileMenu()"
-            class="pointer-events-auto md:hidden p-3 bg-fg/10 hover:bg-first text-fg hover:text-white rounded-md transition-all hide-cursor-ball cursor-pointer shadow-lg backdrop-blur-2xl border border-fg/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="pointer-events-auto md:hidden p-3 bg-fg/30 hover:bg-first text-fg hover:text-white rounded-full transition-all 
+            hide-cursor-ball cursor-pointer border border-fg/10 shadow-black/20 backdrop-blur-2xl shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -50,8 +50,8 @@
         <div class="hidden md:block"></div>
 
         <div class="flex flex-row gap-2 pointer-events-auto">
-            <div
-                class="p-3 px-4 hide-cursor-ball rounded-full flex flex-row gap-6 bg-fg/35 shadow-black/20 backdrop-blur-2xl shadow-lg items-center transition-all cursor-pointer hover:bg-fg/40 mode-toggle">
+            <div class="p-3 px-4 hide-cursor-ball rounded-full flex flex-row gap-6 bg-fg/30 shadow-black/20 backdrop-blur-2xl shadow-lg items-center 
+                transition-all cursor-pointer hover:bg-fg/40 mode-toggle">
                 <div class="mode-ball absolute h-8.5 w-8.5 rounded-full bg-first z-0 transition-all t"></div>
                 <div class="w-5 h-5 sun z-1"
                     style="background-size: cover; background-position: center center; background-repeat: no-repeat;">
@@ -69,12 +69,13 @@
     </div>
 
 
-    <div id="project-modal"
-        class="hidden fixed top-0 left-0 flex justify-center items-center min-h-screen p-4 bg-black/60 backdrop-blur-sm z-[1000] w-screen opacity-0 pointer-events-none transition-all duration-300">
+    <div id="project-modal" class="hidden fixed top-0 left-0 flex justify-center items-center min-h-screen p-4 bg-black/60 backdrop-blur-sm z-[1000] w-screen 
+        opacity-0 pointer-events-none transition-all duration-300">
 
 
         <div id="modal-content"
-            class="bg-bg border-2 border-fg/10 rounded-2xl max-[1800px]:rounded-sm  w-full max-w-[1300px] p-8 pr-4 flex flex-col gap-6 relative transform scale-95 transition-transform duration-300 max-h-[95vh] overflow-y-auto custom-scrollbar">
+            class="bg-bg border-2 border-fg/10 rounded-2xl max-[1800px]:rounded-sm  w-full max-w-[1300px] md:p-8 p-4 
+            flex flex-col gap-6 relative transform scale-95 transition-transform duration-300 max-h-[95vh] overflow-y-auto custom-scrollbar">
 
 
             <button onclick="closeModal()" class="absolute top-4 right-4 bg-fg/10 hover:bg-first text-fg hover:text-white rounded-md w-10 h-10 flex items-center justify-center 
@@ -801,7 +802,7 @@
 
             </section>
 
-            <section class=" w-full flex flex-col flex-wrap items-start md:p-20 p-8 gap-2 mt-40">
+            <section class=" w-full flex flex-col flex-wrap items-start md:p-20 p-8 gap-2 md:mt-40 mt-30">
                 <p class="text-[20px] opacity-55">
                     © Copyright 2026 - Murilo de Oliveira Martins
                 </p>
@@ -831,6 +832,7 @@
     <script src="./js/tabs.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/sidebar.js"></script>
+    <script src="./js/preloader.js"></script>
 
 </body>
 
