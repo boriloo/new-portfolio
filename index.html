@@ -35,9 +35,9 @@
     <div class="circle"></div>
 
 
-    <nav class="w-full fixed md:justify-end justify-end top-0 z-50 flex flex-row p-4">
+    <nav class="w-full fixed md:justify-end pointer-events-none justify-end top-0 z-50 flex flex-row p-4">
 
-        <div class="flex flex-row gap-2">
+        <div class="flex flex-row gap-2 pointer-events-auto">
             <div
                 class="p-3 px-4 hide-cursor-ball rounded-full flex flex-row gap-6 bg-fg/35 shadow-black/20 backdrop-blur-2xl shadow-lg items-center transition-all cursor-pointer hover:bg-fg/40 mode-toggle">
                 <div class="mode-ball absolute h-8.5 w-8.5 rounded-full bg-first z-0 transition-all t">
@@ -59,6 +59,60 @@
 
     <div id="scroll-track" class="fixed h-[80%] right-10 top-[10%] w-1">
         <div id="scroll-thumb" class="bg-first w-full h-20 rounded-full"></div>
+    </div>
+
+    <!-- PROJECTS MODAL -->
+    <div id="project-modal"
+        class="fixed top-0 left-0 flex justify-center items-center min-h-screen p-4 bg-black/60 backdrop-blur-sm z-[1000] w-screen opacity-0 pointer-events-none transition-all duration-300">
+
+        <div id="modal-content"
+            class="bg-bg border-2 border-fg/10 rounded-2xl w-full max-w-[1300px] p-8 flex flex-col gap-6 relative transform scale-95 transition-transform duration-300 max-h-[95vh] overflow-y-auto hide-scrollbar">
+
+
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 bg-fg/10 hover:bg-first text-fg hover:text-white rounded-md w-10 h-10 flex items-center justify-center transition-all hide-cursor-ball z-50 text-[20px]">
+                ✕
+            </button>
+
+
+            <div class="w-full flex flex-col rounded-lg items-center gap-4 mt-6">
+
+                <div class="relative w-full flex flex-row items-center justify-center h-[220px] md:h-[390px]">
+
+                    <button onclick="prevImage()"
+                        class="absolute left-0 md:-left-2 z-40 bg-bg border-2 border-fg/10 hover:border-first hover:bg-first text-fg hover:text-white rounded-full 
+                        w-12 h-12 flex items-center justify-center transition-all duration-300 hide-cursor-ball text-[20px] shadow-lg cursor-pointer">
+                        ❮
+                    </button>
+
+                    <div id="carousel-track"
+                        class="w-full h-full relative flex items-center justify-center overflow-hidden px-4 md:px-12 rounded-xl pointer-events-none">
+                    </div>
+
+                    <button onclick="nextImage()"
+                        class="absolute right-0 md:-right-2 z-40 bg-bg border-2 border-fg/10 hover:border-first hover:bg-first text-fg hover:text-white rounded-full 
+                        w-12 h-12 flex items-center justify-center transition-all duration-300 hide-cursor-ball text-[20px] shadow-lg cursor-pointer">
+                        ❯
+                    </button>
+                </div>
+
+                <div class="flex gap-2 justify-center mt-2" id="carousel-dots">
+                </div>
+
+            </div>
+
+
+            <div class="w-full flex flex-col pt-2">
+                <h1 id="modal-title" class="text-[40px] text-fg font-medium leading-none mb-4">Projeto</h1>
+                <div id="modal-techs" class="flex flex-row flex-wrap gap-2 mb-6"></div>
+                <p id="modal-desc" class="text-[20px] text-fg/80 leading-relaxed w-full"></p>
+                <button id="modal-link" onclick=""
+                    class="w-full mt-8 text-[22px] flex justify-center hide-cursor-ball items-center cursor-pointer bg-first p-4 transition-all duration-300 text-white hover:brightness-150 rounded-md font-medium">
+                    Acessar Projeto
+                </button>
+            </div>
+
+        </div>
     </div>
 
     <div class="w-full flex flex-row">
@@ -143,7 +197,7 @@
                                 <img src="./public/assets/brazil.png"
                                     class="w-6 h-8 inline-block align-middle mx-1 pb-1"> com 19 anos de idade,
                                 especializado em React/Next.js e Node.js, com experiência em desenvolvimento de
-                                aplicações de nível comercial, com a melhor experiência possível.
+                                aplicações de nível comercial.
                             </p>
 
                             <div class="flex flex-row gap-4 mt-4">
@@ -525,19 +579,217 @@
                 </section>
 
 
-                <section class=" w-full flex flex-col flex-wrap items-start p-20 gap-2 mt-40">
+                <section class="w-full flex flex-col flex-wrap items-start p-20 gap-2 mt-40">
                     <p class="text-[30px] opacity-55">
-                        Experiência
+                        Projetos
                     </p>
                     <div class="w-full h-0.5 bg-fg opacity-35"></div>
-                    <div class="w-full rounded-md flex flex-row gap-2 bg-bgSec p-2 px-4">
-                        <button class="flex-1 bg-first text-white p-2 px-4 rounded-md text-[24px]">Profissional</button>
-                        <button class="flex-1 bg-first text-white p-2 px-4 rounded-md text-[24px]">Profissional</button>
+
+                    <div class="flex flex-col gap-2 mt-4 w-full">
+
+                        <!-- Projeto 1: Contoru -->
+                        <div class="p-6 flex flex-col w-full hover:scale-102 origin-left transition-all group hide-cursor-ball cursor-pointer"
+                            onclick="openModal('contoru')">
+
+                            <h1 class="text-[36px] group-hover:text-first transition-all flex items-center">Contoru
+                                <span
+                                    class="text-first text-[20px] w-0 group-hover:w-[300px] transition-all truncate ml-3 overflow-hidden">
+                                    - Um Desktop Online
+                                </span>
+                            </h1>
+
+                            <!-- Container de Tecnologias (com flex-wrap e max-h para permitir quebra de linha) -->
+                            <div
+                                class="flex flex-row flex-wrap gap-3 max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 group-hover:mt-4 items-center overflow-hidden transition-all duration-500">
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-react-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">REACT</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-typescript-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">TYPESCRIPT</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-cloudflare-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">CLOUDFLARE</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-supabase-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">SUPABASE</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-tailwindcss-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">TAILWIND</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-postgresql-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">POSTGRESQL</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 2: HueMaster -->
+                        <div class="p-6 flex flex-col w-full hover:scale-102 origin-left transition-all group hide-cursor-ball cursor-pointer"
+                            onclick="openModal('huemaster')">
+                            <h1 class="text-[36px] group-hover:text-first transition-all flex items-center">HueMaster
+                                <span
+                                    class="text-first text-[20px] w-0 group-hover:w-[350px] transition-all truncate ml-3 overflow-hidden">
+                                    - Jogo de adivinhação
+                                </span>
+                            </h1>
+
+                            <div
+                                class="flex flex-row flex-wrap gap-3 max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 group-hover:mt-4 items-center overflow-hidden transition-all duration-500">
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-react-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">REACT</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-vite-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">VITE</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-typescript-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">TYPESCRIPT</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-nodejs-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">NODE.JS</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-vercel-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">VERCEL</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 3: NovaBalança -->
+                        <div class="p-6 flex flex-col w-full hover:scale-102 origin-left transition-all group hide-cursor-ball cursor-pointer"
+                            onclick="openModal('novabalanca')">
+                            <h1 class="text-[36px] group-hover:text-first transition-all flex items-center">NovaBalança
+                                <span
+                                    class="text-first text-[20px] w-0 group-hover:w-[450px] transition-all truncate ml-3 overflow-hidden">
+                                    - Landing Page de Contabilidade
+                                </span>
+                            </h1>
+
+                            <div
+                                class="flex flex-row flex-wrap gap-3 max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 group-hover:mt-4 items-center overflow-hidden transition-all duration-500">
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-html5-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">HTML</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-sass-original text-[20px]"></i>
+                                    <h1 class="text-[14px]">SCSS</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-javascript-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">JAVASCRIPT</h1>
+                                </div>
+                                <div
+                                    class="border-2 border-fg/20 bg-bg p-2 px-3 flex flex-row items-center justify-start gap-2 rounded-md">
+                                    <i class="text-fg/70 devicon-figma-plain text-[20px]"></i>
+                                    <h1 class="text-[14px]">UI/UX</h1>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div></div>
+
                 </section>
 
 
+                <section class=" w-full flex flex-col flex-wrap items-start p-20 gap-2 mt-40">
+                    <p class="text-[30px] opacity-55">
+                        Contato
+                    </p>
+                    <div class="w-full h-0.5 bg-fg opacity-35"></div>
+                    <div
+                        class="relative p-2 px-6 rounded-xl rounded-bl-none bg-first inline-flex justify-center items-center mt-4 ml-6">
+                        <p class="text-white text-[60px]">Vamos construir algo!</p>
+
+                        <div
+                            class="absolute bottom-0 left-[-24px] w-0 h-0 border-r-[25px] border-r-first border-t-[27px] border-t-transparent">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col w-full max-w-[450px] flex-wrap gap-2 mt-4">
+
+                        <button onclick="window.open('https://github.com/boriloo', '_blank')"
+                            class="border-2 border-fg/20 bg-bg p-4 px-6 flex flex-row items-center group hover:bg-first transition-all hover:scale-102 justify-start gap-4 rounded-md hide-cursor-ball cursor-pointer hover:border-first">
+                            <i class="text-fg/70 group-hover:text-white devicon-github-plain text-[28px]"></i>
+                            <h1 class="text-[22px] group-hover:text-white transition-colors">Github</h1>
+                        </button>
+
+
+                        <button onclick="window.open('https://www.linkedin.com/in/murilomartins53/', '_blank')"
+                            class="border-2 border-fg/20 bg-bg p-4 px-6 flex flex-row items-center group hover:bg-first transition-all hover:scale-102 justify-start gap-4 rounded-md hide-cursor-ball cursor-pointer hover:border-first">
+                            <i class="text-fg/70 group-hover:text-white devicon-linkedin-plain text-[28px]"></i>
+                            <h1 class="text-[22px] group-hover:text-white transition-colors">Linkedin</h1>
+                        </button>
+
+
+                        <button onclick="window.open('https://wa.me/5551996532142', '_blank')"
+                            class="border-2 border-fg/20 bg-bg p-4 px-6 flex flex-row items-center group hover:bg-first transition-all hover:scale-102 justify-start gap-4 rounded-md hide-cursor-ball cursor-pointer hover:border-first">
+                            <img src="./public/icons/whatsapp.png"
+                                class="w-7 h-7 opacity-70 dark:hidden group-hover:hidden transition-all" alt="WhatsApp">
+                            <img src="./public/icons/whatsapp-white.png"
+                                class="w-7 h-7 opacity-70 hidden dark:block group-hover:block group-hover:opacity-100 transition-all"
+                                alt="WhatsApp Branco">
+                            <h1 class="text-[22px] group-hover:text-white transition-colors">55 51 996532142</h1>
+                        </button>
+
+
+                        <button onclick="window.open('mailto:muriloomartins00@gmail.com', '_blank')"
+                            class="border-2 border-fg/20 bg-bg p-4 px-6 flex flex-row items-center group hover:bg-first transition-all hover:scale-102 justify-start gap-4 rounded-md hide-cursor-ball cursor-pointer hover:border-first">
+                            <img src="./public/icons/mail.png"
+                                class="w-7 h-7 opacity-70 dark:hidden group-hover:hidden transition-all" alt="Email">
+                            <img src="./public/icons/mail-white.png"
+                                class="w-7 h-7 opacity-70 hidden dark:block group-hover:block group-hover:opacity-100 transition-all group-hover"
+                                alt="Email Branco">
+                            <h1 class="text-[22px] group-hover:text-white transition-colors">muriloomartins00@gmail.com
+                            </h1>
+                        </button>
+
+
+                        <button onclick="window.open('https://instagram.com/seuusuario', '_blank')"
+                            class="border-2 border-fg/20 bg-bg p-4 px-6 flex flex-row items-center group hover:bg-first transition-all hover:scale-102 justify-start gap-4 rounded-md hide-cursor-ball cursor-pointer hover:border-first">
+                            <img src="./public/icons/instagram.png"
+                                class="w-7 h-7 opacity-70 dark:hidden group-hover:hidden transition-all"
+                                alt="Instagram">
+                            <img src="./public/icons/instagram-white.png"
+                                class="w-7 h-7 opacity-70 hidden dark:block group-hover:block group-hover:opacity-100 transition-all"
+                                alt="Instagram Branco">
+                            <h1 class="text-[22px] group-hover:text-white transition-colors">Instagram</h1>
+                        </button>
+                    </div>
+
+
+
+
+                </section>
+
+                <section class=" w-full flex flex-col flex-wrap items-start p-20 gap-2 mt-40">
+                    <p class="text-[20px] opacity-55">
+                        © Copyright 2026 Murilo de Oliveira Martins
+                    </p>
+
+                </section>
 
             </main>
         </div>
@@ -545,12 +797,14 @@
 
     <div id="tech-tooltip"
         class="fixed opacity-0 pointer-events-none z-[999] bg-first text-white p-3 px-4 rounded-xl transition-opacity duration-200 max-w-[270px] text-center text-[15px] shadow-2xl">
-        <span id="tech-tooltip-text" class="text-white"></span>
-        <!-- Rabinho centralizado apontando para baixo -->
+        <span id="tech-tooltip-text" class="text-white"></span>F
         <div
             class="absolute -bottom-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-first">
         </div>
     </div>
+
+
+
     <script src="./js/pageFX.js"></script>
     <script src="./js/modeToggle.js"></script>
     <script src="./js/circles.js"></script>
@@ -558,6 +812,7 @@
     <script src="./js/photoContainer.js"></script>
     <script src="./js/tooltip.js"></script>
     <script src="./js/tabs.js"></script>
+    <script src="./js/modal.js"></script>
 
 </body>
 
