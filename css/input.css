@@ -35,9 +35,7 @@
         --bgSec: #171718;
         --gray: #9d9d8b;
 
-        /* .blue-sky {
-            background-image: url('../public/assets/dark-blue.jpg');
-        } */
+
 
         .mode-ball {
             transform: translateX(105%);
@@ -46,9 +44,9 @@
 
     ::selection {
         background-color: #2F2FE4;
-        /* cor de fundo */
+
         color: #c6dbff;
-        /* cor do texto */
+
     }
 
     ::-webkit-selection {
@@ -56,10 +54,6 @@
         color: #c6dbff;
     }
 
-    ::-webkit-scrollbar {
-        width: 0px;
-        display: none;
-    }
 
     * {
         color: var(--fg);
@@ -106,7 +100,7 @@
         pointer-events: none;
         z-index: 99999999;
         background-color: var(--first);
-        /* so that it stays on top of all other elements */
+
     }
 
 
@@ -133,9 +127,33 @@
 
     aside {
         -ms-overflow-style: none;
-        /* IE and Edge */
+
         scrollbar-width: none;
-        /* Firefox */
+
+    }
+
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background-color: var(--bgSec);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: var(--first);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        filter: brightness(1.2);
+    }
+
+
+    body::-webkit-scrollbar {
+        display: none;
     }
 
 }
