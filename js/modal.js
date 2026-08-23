@@ -4,7 +4,10 @@ const modalRepos = document.getElementById('modal-repos');
 const projectsData = {
     'contoru': {
         title: 'Contoru',
-        desc: 'Um Desktop Online focado em produtividade. Permite simular um ambiente de sistema operacional diretamente pelo navegador, integrando múltiplas funcionalidades em uma interface fluida, escalável e com alta performance.',
+        desc: {
+            pt: 'Um Desktop Online focado em produtividade. Permite simular um ambiente de sistema operacional diretamente pelo navegador, integrando múltiplas funcionalidades em uma interface fluida, escalável e com alta performance.',
+            en: 'An Online Desktop focused on productivity. It allows you to simulate an operating system environment directly in the browser, integrating multiple features into a fluid, scalable, and high-performance interface.'
+        },
         techs: [
             { name: 'REACT', icon: 'devicon-react-original' },
             { name: 'TYPESCRIPT', icon: 'devicon-typescript-plain' },
@@ -20,13 +23,16 @@ const projectsData = {
         ],
         link: 'https://contoru.vercel.app/',
         repos: [
-            { label: 'Repositorio Web', url: 'https://github.com/boriloo/contoru-web' },
-            { label: 'Repositorio API', url: 'https://github.com/boriloo/contoru-api' }
+            { label: { pt: 'Repositorio Web', en: 'Web Repository' }, url: 'https://github.com/boriloo/contoru-web' },
+            { label: { pt: 'Repositorio API', en: 'API Repository' }, url: 'https://github.com/boriloo/contoru-api' }
         ]
     },
     'huemaster': {
         title: 'HueMaster',
-        desc: 'Jogo de adivinhação de cores interativo. Testa a percepção visual do usuário exigindo que ele descubra a cor exata gerada aleatoriamente em formato hexadecimal. Interface imersiva com feedback dinâmico.',
+        desc: {
+            pt: 'Jogo de adivinhação de cores interativo. Testa a percepção visual do usuário exigindo que ele descubra a cor exata gerada aleatoriamente em formato hexadecimal. Interface imersiva com feedback dinâmico.',
+            en: 'Interactive color guessing game. It tests the user\'s visual perception by requiring them to guess the exact randomly generated color in hexadecimal format. Immersive interface with dynamic feedback.'
+        },
         techs: [
             { name: 'REACT', icon: 'devicon-react-original' },
             { name: 'VITE', icon: 'devicon-vite-original' },
@@ -41,13 +47,16 @@ const projectsData = {
         ],
         link: 'https://huemaster.vercel.app/',
         repos: [
-            { label: 'Repositorio Web', url: 'https://github.com/boriloo/huemaster-client' },
-            { label: 'Repositorio API', url: 'https://github.com/boriloo/huemaster-server' }
+            { label: { pt: 'Repositorio Web', en: 'Web Repository' }, url: 'https://github.com/boriloo/huemaster-client' },
+            { label: { pt: 'Repositorio API', en: 'API Repository' }, url: 'https://github.com/boriloo/huemaster-server' }
         ]
     },
     'novabalanca': {
         title: 'NovaBalança',
-        desc: 'Landing Page institucional construída para um escritório fictício de contabilidade. Totalmente responsiva e focada em SEO e performance (carregamento rápido), aplicando conceitos limpos de UI/UX para máxima conversão.',
+        desc: {
+            pt: 'Landing Page institucional construída para um escritório fictício de contabilidade. Totalmente responsiva e focada em SEO e performance (carregamento rápido), aplicando conceitos limpos de UI/UX para máxima conversão.',
+            en: 'Institutional Landing Page built for a fictional accounting firm. Fully responsive and focused on SEO and performance (fast loading), applying clean UI/UX concepts for maximum conversion.'
+        },
         techs: [
             { name: 'HTML', icon: 'devicon-html5-plain' },
             { name: 'SCSS', icon: 'devicon-sass-original' },
@@ -61,7 +70,7 @@ const projectsData = {
         ],
         link: 'https://boriloo.github.io/NovaBalanca-Contabilidade/',
         repos: [
-            { label: 'Repositorio GitHub', url: 'https://github.com/boriloo/NovaBalanca-Contabilidade' }
+            { label: { pt: 'Repositorio GitHub', en: 'GitHub Repository' }, url: 'https://github.com/boriloo/NovaBalanca-Contabilidade' }
         ]
     }
 };
@@ -99,8 +108,15 @@ window.openModal = function (projectId) {
     const data = projectsData[projectId];
     if (!data) return;
 
+    // Busca qual é o idioma atual selecionado pelo usuário
+    const currentLang = localStorage.getItem('language') || 'pt';
+
     modalTitle.textContent = data.title;
-    modalDesc.textContent = data.desc;
+    // Puxa a descrição no idioma correto
+    modalDesc.textContent = data.desc[currentLang];
+    
+    // Atualiza o botão principal de acesso
+    modalLink.textContent = currentLang === 'pt' ? 'Acessar Projeto' : 'Access Project';
     modalLink.onclick = () => window.open(data.link, '_blank');
 
     modalTechs.innerHTML = '';
@@ -113,7 +129,7 @@ window.openModal = function (projectId) {
                 <button onclick="window.open('${repo.url}', '_blank')" 
                     class="flex-1 bg-transparent border-2 border-fg/20 hover:border-first text-fg/80 hover:text-first p-2 rounded-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer hide-cursor-ball text-[16px]">
                     <i class="devicon-github-plain text-[20px]"></i>
-                    ${repo.label}
+                    ${repo.label[currentLang]}
                 </button>
             `;
         });
@@ -133,7 +149,6 @@ window.openModal = function (projectId) {
     currentImages = data.images;
     currentImageIndex = 0;
     isAnimating = false;
-
 
     carouselTrack.innerHTML = '';
     domSlides = [];
@@ -165,9 +180,7 @@ window.openModal = function (projectId) {
         domSlides.forEach(slide => slide.classList.add('duration-500', 'ease-in-out'));
     }, 50);
 
-
     modal.classList.remove('hidden');
-
 
     setTimeout(() => {
         modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -177,11 +190,9 @@ window.openModal = function (projectId) {
 };
 
 window.closeModal = function () {
-
     modal.classList.add('opacity-0', 'pointer-events-none');
     modalContent.classList.remove('scale-100');
     modalContent.classList.add('scale-95');
-
 
     setTimeout(() => {
         modal.classList.add('hidden');
@@ -209,7 +220,6 @@ window.nextImage = function () {
     isAnimating = true;
     currentImageIndex = getIndex(1);
 
-
     let el = domSlides.shift();
     el.classList.remove('transition-all', 'duration-500', 'ease-in-out');
     el.className = baseClass + " transition-none " + posClasses[4];
@@ -217,7 +227,6 @@ window.nextImage = function () {
     domSlides.push(el);
 
     void el.offsetWidth;
-
 
     domSlides.forEach((slide, i) => {
         slide.classList.remove('transition-none');
@@ -234,7 +243,6 @@ window.prevImage = function () {
     isAnimating = true;
     currentImageIndex = getIndex(-1);
 
-
     let el = domSlides.pop();
     el.classList.remove('transition-all', 'duration-500', 'ease-in-out');
     el.className = baseClass + " transition-none " + posClasses[0];
@@ -242,7 +250,6 @@ window.prevImage = function () {
     domSlides.unshift(el);
 
     void el.offsetWidth;
-
 
     domSlides.forEach((slide, i) => {
         slide.classList.remove('transition-none');
@@ -256,8 +263,6 @@ window.prevImage = function () {
 
 window.goToImage = function (targetIndex) {
     if (isAnimating || targetIndex === currentImageIndex) return;
-
-
 
     if (targetIndex > currentImageIndex) {
         nextImage();

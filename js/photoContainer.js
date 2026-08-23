@@ -5,18 +5,12 @@ const coinSpin = document.querySelector('.coin-spin');
 const imgFront = document.getElementById('img-front');
 const imgBack = document.getElementById('img-back');
 const textElement = document.getElementById('foto-texto');
-const balaoElement = document.getElementById('foto-balao'); // Seleciona o balão todo
+const balaoElement = document.getElementById('foto-balao');
 
 const photos = [
     './public/assets/photo.png',
     './public/assets/photo2.png',
     './public/assets/flor.jpg'
-];
-
-const texts = [
-    'Esse sou eu!',
-    'Eu denovo...',
-    'Esse é meu cachorro!'
 ];
 
 let currentRotation = 0;
@@ -28,20 +22,37 @@ tiltContainer.addEventListener('click', () => {
 
     coinSpin.style.transform = `rotateY(${currentRotation}deg)`;
 
-    // 1. Apaga o balão inteiro forçando opacidade 0 na mesma hora do clique
+
     balaoElement.style.opacity = '0';
 
     const nextPhotoIndex = (clickCount + 1) % photos.length;
     const currentVisibleIndex = clickCount % photos.length;
 
     setTimeout(() => {
-        // 2. Troca o texto enquanto está invisível
-        textElement.textContent = texts[currentVisibleIndex];
-        
-        // 3. Remove a opacidade forçada, deixando o hover do CSS agir de novo
+
+        const currentLang = localStorage.getItem('language') || 'pt';
+
+
+        const texts = {
+            pt: [
+                'Esse sou eu!',
+                'Eu denovo...',
+                'Esse é meu cachorro!'
+            ],
+            en: [
+                'That\'s me!',
+                'Me again...',
+                'That\'s my dog!'
+            ]
+        };
+
+
+        textElement.textContent = texts[currentLang][currentVisibleIndex];
+
+
         balaoElement.style.opacity = '';
 
-        // Prepara a imagem da face escondida para o próximo clique
+
         if (clickCount % 2 !== 0) {
             imgFront.src = photos[nextPhotoIndex];
         } else {
