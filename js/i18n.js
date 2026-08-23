@@ -81,7 +81,7 @@ const translations = {
         nav_contact: "Contact",
         nav_langs: "Languages",
 
-        hero_hi: "Hi! I'm",
+        hero_hi: "Hey! I'm",
         hero_desc: `I'm a 19 year old <img src="./public/assets/brazil.png" class="w-6 h-8 inline-block align-middle mx-1 pb-1"> Brazilian <span class="text-first font-semibold">full-stack</span> developer  specialized in React/Next.js and Node.js, with experience building commercial-grade applications.`,
         hero_cv: "Download Resume",
         hero_tooltip: "That's me!",
