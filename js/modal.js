@@ -20,8 +20,8 @@ const projectsData = {
         ],
         link: 'https://contoru.vercel.app/',
         repos: [
-            { label: 'Repositorio Web', url: 'https://github.com/seu-usuario/contoru-web' },
-            { label: 'Repositorio API', url: 'https://github.com/seu-usuario/contoru-api' }
+            { label: 'Repositorio Web', url: 'https://github.com/boriloo/contoru-web' },
+            { label: 'Repositorio API', url: 'https://github.com/boriloo/contoru-api' }
         ]
     },
     'huemaster': {
@@ -41,7 +41,8 @@ const projectsData = {
         ],
         link: 'https://huemaster.vercel.app/',
         repos: [
-            { label: 'Repositorio GitHub', url: 'https://github.com/seu-usuario/huemaster' }
+            { label: 'Repositorio Web', url: 'https://github.com/boriloo/huemaster-client' },
+            { label: 'Repositorio API', url: 'https://github.com/boriloo/huemaster-server' }
         ]
     },
     'novabalanca': {
