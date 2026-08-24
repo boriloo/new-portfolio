@@ -5,8 +5,8 @@ const projectsData = {
     'contoru': {
         title: 'Contoru',
         desc: {
-            pt: 'Um Desktop Online focado em produtividade. Permite simular um ambiente de sistema operacional diretamente pelo navegador, integrando múltiplas funcionalidades em uma interface fluida, escalável e com alta performance.',
-            en: 'An Online Desktop focused on productivity. It allows you to simulate an operating system environment directly in the browser, integrating multiple features into a fluid, scalable, and high-performance interface.'
+            pt: 'Uma ferramenta para organizar e compartilhar links dentro de um ambiente visual inspirado em um sistema operacional. Desenvolvido para resolver o acúmulo desordenado de referências e projetos, o Contoru permite criar desktops personalizados, agrupar itens em pastas, pesquisar, e convidar outras pessoas para colaboração em tempo real.',
+            en: 'A tool for organizing and sharing links within a visual environment inspired by an operating system. Built to solve the clutter of scattered references and projects, Contoru allows users to create custom desktops, group items into folders, search, and invite others for real-time collaboration.'
         },
         techs: [
             { name: 'REACT', icon: 'devicon-react-original' },
@@ -114,7 +114,7 @@ window.openModal = function (projectId) {
     modalTitle.textContent = data.title;
     // Puxa a descrição no idioma correto
     modalDesc.textContent = data.desc[currentLang];
-    
+
     // Atualiza o botão principal de acesso
     modalLink.textContent = currentLang === 'pt' ? 'Acessar Projeto' : 'Access Project';
     modalLink.onclick = () => window.open(data.link, '_blank');
