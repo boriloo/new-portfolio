@@ -15,23 +15,24 @@ const photos = [
 
 let currentRotation = 0;
 let clickCount = 0;
+let isFlipping = false; 
 
 tiltContainer.addEventListener('click', () => {
+    if (isFlipping) return; 
+    isFlipping = true;
+
     currentRotation += 180;
     clickCount++;
 
     coinSpin.style.transform = `rotateY(${currentRotation}deg)`;
-
-
     balaoElement.style.opacity = '0';
 
-    const nextPhotoIndex = (clickCount + 1) % photos.length;
-    const currentVisibleIndex = clickCount % photos.length;
+    const currentClick = clickCount; 
+    const nextPhotoIndex = (currentClick + 1) % photos.length;
+    const currentVisibleIndex = currentClick % photos.length;
 
     setTimeout(() => {
-
         const currentLang = localStorage.getItem('language') || 'pt';
-
 
         const texts = {
             pt: [
@@ -46,18 +47,17 @@ tiltContainer.addEventListener('click', () => {
             ]
         };
 
-
         textElement.textContent = texts[currentLang][currentVisibleIndex];
+        balaoElement.style.opacity = '1';
 
-
-        balaoElement.style.opacity = '';
-
-
-        if (clickCount % 2 !== 0) {
+        
+        if (currentClick % 2 !== 0) {
             imgFront.src = photos[nextPhotoIndex];
         } else {
             imgBack.src = photos[nextPhotoIndex];
         }
+
+        isFlipping = false; 
     }, 300);
 });
 
