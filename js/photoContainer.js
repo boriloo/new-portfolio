@@ -4,8 +4,10 @@ const tiltWrapper = document.getElementById('tilt-wrapper');
 const coinSpin = document.querySelector('.coin-spin');
 const imgFront = document.getElementById('img-front');
 const imgBack = document.getElementById('img-back');
-const textElement = document.getElementById('foto-texto');
-const balaoElement = document.getElementById('foto-balao');
+
+//
+const textElements = document.querySelectorAll('.foto-texto');
+const balaoElements = document.querySelectorAll('.foto-balao');
 
 const photos = [
     './public/assets/photo.png',
@@ -15,19 +17,23 @@ const photos = [
 
 let currentRotation = 0;
 let clickCount = 0;
-let isFlipping = false; 
+let isFlipping = false;
 
 tiltContainer.addEventListener('click', () => {
-    if (isFlipping) return; 
+    if (isFlipping) return;
     isFlipping = true;
 
     currentRotation += 180;
     clickCount++;
 
     coinSpin.style.transform = `rotateY(${currentRotation}deg)`;
-    balaoElement.style.opacity = '0';
 
-    const currentClick = clickCount; 
+
+    balaoElements.forEach(balao => {
+        balao.style.opacity = '0';
+    });
+
+    const currentClick = clickCount;
     const nextPhotoIndex = (currentClick + 1) % photos.length;
     const currentVisibleIndex = currentClick % photos.length;
 
@@ -47,17 +53,26 @@ tiltContainer.addEventListener('click', () => {
             ]
         };
 
-        textElement.textContent = texts[currentLang][currentVisibleIndex];
-        balaoElement.style.opacity = '1';
+        const novoTexto = texts[currentLang][currentVisibleIndex];
 
-        
+
+        textElements.forEach(el => {
+            el.textContent = novoTexto;
+        });
+
+
+        balaoElements.forEach(balao => {
+            balao.style.opacity = '';
+        });
+
+
         if (currentClick % 2 !== 0) {
             imgFront.src = photos[nextPhotoIndex];
         } else {
             imgBack.src = photos[nextPhotoIndex];
         }
 
-        isFlipping = false; 
+        isFlipping = false;
     }, 300);
 });
 

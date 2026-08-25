@@ -276,7 +276,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-col relative group">
+                    <div class="flex-col relative group md:mt-0 mt-12">
                         <div id="tilt-container"
                             class="md:w-[300px] w-[250px] transition-all md:h-[300px] h-[250px] hide-cursor-ball cursor-pointer [perspective:1000px] select-none">
                             <div id="tilt-wrapper"
@@ -320,11 +320,20 @@
                         <img src="./public/icons/cursor.png"
                             class="absolute -right-5 -bottom-5 animate-pulse w-12 h-12 z-[100]" alt="">
 
-                        <div id="foto-balao"
-                            class="absolute opacity-0 group-hover:opacity-100 transition-all duration-400 -top-5 -right-34 p-2 px-4 rounded-xl rounded-bl-none bg-first inline-flex justify-center items-center">
-                            <p id="foto-texto" class="text-white" data-i18n="hero_tooltip">Esse sou eu!</p>
+                        <div
+                            class="foto-balao absolute opacity-0 group-hover:opacity-100 transition-all duration-400 -top-5 -right-34 md:inline-flex hidden p-2 px-4 rounded-xl rounded-bl-none bg-first justify-center items-center">
+                            <p class="foto-texto text-white" data-i18n="hero_tooltip">Esse sou eu!</p>
                             <div
                                 class="absolute bottom-0 left-[-7px] w-0 h-0 border-r-[8px] border-r-first border-t-[10px] border-t-transparent">
+                            </div>
+                        </div>
+
+                        <div
+                            class="foto-balao absolute transition-all duration-400 -top-15 left-1/2 -translate-x-1/2 md:hidden inline-flex p-2 px-4 rounded-xl bg-first justify-center items-center">
+                            <p class="foto-texto text-white text-center whitespace-nowrap" data-i18n="hero_tooltip">Esse
+                                sou eu!</p>
+                            <div
+                                class="absolute -bottom-[9px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-first">
                             </div>
                         </div>
                     </div>
